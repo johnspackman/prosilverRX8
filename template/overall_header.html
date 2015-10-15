@@ -14,6 +14,7 @@
 	<!-- IF S_ENABLE_FEEDS_TOPICS_ACTIVE --><link rel="alternate" type="application/atom+xml" title="{L_FEED} - {L_FEED_TOPICS_ACTIVE}" href="{U_FEED}?mode=topics_active"><!-- ENDIF -->
 	<!-- IF S_ENABLE_FEEDS_FORUM and S_FORUM_ID --><link rel="alternate" type="application/atom+xml" title="{L_FEED} - {L_FORUM} - {FORUM_NAME}" href="{U_FEED}?f={S_FORUM_ID}"><!-- ENDIF -->
 	<!-- IF S_ENABLE_FEEDS_TOPIC and S_TOPIC_ID --><link rel="alternate" type="application/atom+xml" title="{L_FEED} - {L_TOPIC} - {TOPIC_TITLE}" href="{U_FEED}?f={S_FORUM_ID}&amp;t={S_TOPIC_ID}"><!-- ENDIF -->
+	<!-- EVENT overall_header_feeds -->
 <!-- ENDIF -->
 
 <!-- IF U_CANONICAL -->
@@ -31,7 +32,7 @@
 <script>
 	WebFontConfig = {
 		google: {
-			families: ['Open Sans:n6']
+			families: ['Open+Sans:600:cyrillic-ext,latin,greek-ext,greek,vietnamese,latin-ext,cyrillic']
 		}
 	};
 
@@ -45,13 +46,7 @@
 <!-- ENDIF -->
 <link href="{T_STYLESHEET_LINK}" rel="stylesheet">
 <link href="{T_STYLESHEET_LANG_LINK}" rel="stylesheet">
-<!-- PHP -->
-if ($_GET['forcedesktop'] != 'yes') {
-<!-- ENDPHP -->
 <link href="{T_THEME_PATH}/responsive.css?assets_version={T_ASSETS_VERSION}" rel="stylesheet" media="all and (max-width: 700px), all and (max-device-width: 700px)">
-<!-- PHP -->
-}
-<!-- ENDPHP -->
 
 <!-- IF S_CONTENT_DIRECTION eq 'rtl' -->
 	<link href="{T_THEME_PATH}/bidi.css?assets_version={T_ASSETS_VERSION}" rel="stylesheet">
@@ -70,8 +65,6 @@ if ($_GET['forcedesktop'] != 'yes') {
 {$STYLESHEETS}
 
 <!-- EVENT overall_header_stylesheets_after -->
-<!-- INCLUDE ad_script.html -->
-
 
 </head>
 <body id="phpbb" class="nojs notouch section-{SCRIPT_NAME} {S_CONTENT_DIRECTION} {BODY_CLASS}">
@@ -86,6 +79,11 @@ if ($_GET['forcedesktop'] != 'yes') {
 
 			<div id="site-description">
 				<a id="logo" class="logo" href="<!-- IF U_SITE_HOME -->{U_SITE_HOME}<!-- ELSE -->{U_INDEX}<!-- ENDIF -->" title="<!-- IF U_SITE_HOME -->{L_SITE_HOME}<!-- ELSE -->{L_INDEX}<!-- ENDIF -->">{SITE_LOGO_IMG}</a>
+				<h1>{SITENAME}</h1>
+				<p>{SITE_DESCRIPTION}</p>
+				<p class="skiplink"><a href="#start_here">{L_SKIP}</a></p>
+			</div>
+
 			<!-- EVENT overall_header_searchbox_before -->
 			<!-- IF S_DISPLAY_SEARCH and not S_IN_SEARCH -->
 			<div id="search-box" class="search-box search-header" role="search">
@@ -100,20 +98,6 @@ if ($_GET['forcedesktop'] != 'yes') {
 			</div>
 			<!-- ENDIF -->
 
-		<table width="100%" cellspacing="0">
-		<tr>
-			<td>
-</td>
-			<td><a href="https://www.rx8ownersclub.co.uk/membership/membershipTypeSelect.php"><H2>Join the Club / Renew Club membership</H2>Membership brings benefits and discounts and full access to the forum - for the price of half a tank of petrol! Apply or renew online.</a></td>
-			<td><a href="http://www.rx8ownersclub.co.uk/calendar.html"><H2>Club Calendar</H2>Find out about the club's forthcoming events.</a></td>
-			<td><a href="http://shop.rx8oc.co.uk"><H2>Club Shop</H2>Buy RX-8 Merchandise in the online shop</a></td>
-			<td><a href="http://www.rx8ownersclub.co.uk/tyreprices/index.php" target="_blank"><H2>Club Tyre Prices</H2>Tyre Prices for popular tyre sizes - updated daily! (Members only).</a></td>
-			<td><a href="http://www.rx8ownersclub.co.uk/forum/viewtopic.php?f=23&t=3847"><H2>Club Map</H2>Make your mark on the Owners Club map (unofficial)</a></td>
-		</tr>
-		</table>
-				<p class="skiplink"><a href="#start_here">{L_SKIP}</a></p>
-			</div>
-
 			</div>
 		</div>
 		<!-- EVENT overall_header_navbar_before -->
@@ -123,7 +107,6 @@ if ($_GET['forcedesktop'] != 'yes') {
 	<!-- EVENT overall_header_page_body_before -->
 
 	<a id="start_here" class="anchor"></a>
-	<!-- INCLUDE ad_banner.html -->
 	<div id="page-body" role="main">
 		<!-- IF S_BOARD_DISABLED and S_USER_LOGGED_IN and (U_MCP or U_ACP) -->
 		<div id="information" class="rules">
